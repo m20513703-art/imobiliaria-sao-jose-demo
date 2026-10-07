@@ -14,11 +14,11 @@
   const state = {properties:[],leads:[],token:null,session:null,refreshTimer:null};
   const dbFetch = async (table, {method='GET',token=null,body=null,query=''}={}) => {
     const response = await fetch(`${CONFIG.url}/rest/v1/${table}${query}`, {
-      method, headers:{apikey:CONFIG.anonKey, Authorization:`Bearer ${token || CONFIG.anonKey}`, 'Content-Type':'application/json', Prefer:method==='POST'?'return=representation':method==='PATCH'?'return=minimal':''},
+      method, headers:{apikey:CONFIG.anonKey, Authorization:`Bearer ${token || CONFIG.anonKey}`, 'Content-Type':'application/json', Prefer:method==='POST'?'return=minimal':method==='PATCH'?'return=minimal':''},
       ...(body===null?{}:{body:JSON.stringify(body)})
     });
     if (!response.ok) { let message=`Falha de conexão (${response.status}).`; try {const err=await response.json();message=err.message||message;}catch(_){} throw new Error(message); }
-    return response.status===204 ? null : response.json();
+    return response.status===204||response.status===201 ? null : response.json();
   };
   const authFetch = async (path, body, method='POST', token=null) => {
     const response=await fetch(`${CONFIG.url}/auth/v1/${path}`,{method,headers:{apikey:CONFIG.anonKey,'Content-Type':'application/json',...(token?{Authorization:`Bearer ${token}`}:{})},...(body?{body:JSON.stringify(body)}:{})});
