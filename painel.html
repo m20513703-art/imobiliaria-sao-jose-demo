@@ -12,24 +12,45 @@
   <div class="demo-banner">PAINEL DE DEMONSTRAÇÃO · dados fictícios · não inserir informações reais</div>
   <header class="site-header panel-header">
     <a class="brand" href="index.html" aria-label="Imobiliária São José — voltar ao site">
-      <span class="brand-mark">SJ</span><span><strong>São José</strong><small>PAINEL DEMONSTRATIVO</small></span>
+      <img class="brand-logo" src="logo-sao-jose.svg" alt=""><span><strong>São José</strong><small>PAINEL DEMONSTRATIVO</small></span>
     </a>
-    <div class="panel-header-actions"><span class="online-dot">Demonstração local</span><a class="button button-outline" href="index.html">Ver site público ↗</a></div>
+    <div class="panel-header-actions"><span class="online-dot" id="header-login-status">Acesso protegido</span><button class="button button-outline" id="logout-button" type="button" hidden>Sair</button><a class="button button-outline" href="index.html">Ver site público ↗</a></div>
   </header>
 
-  <main class="panel-layout">
+  <main id="login-gate" class="login-gate" hidden>
+    <form id="login-form" class="login-card">
+      <img class="brand-logo" src="logo-sao-jose.svg" alt="">
+      <span class="eyebrow">ACESSO RESTRITO</span><h1>Painel da equipe</h1>
+      <p>Entre com a conta autorizada da imobiliária para gerenciar anúncios e interessados.</p>
+      <label>E-mail<input type="email" name="email" required autocomplete="username" placeholder="seu@email.com"></label>
+      <label>Senha<input type="password" name="password" required autocomplete="current-password" placeholder="Sua senha"></label>
+      <p id="login-error" class="form-error" hidden></p>
+      <button class="button button-orange full-button" type="submit">Entrar</button>
+      <small>Cadastro público desativado. O acesso é liberado individualmente pelo administrador.</small>
+    </form>
+    <form id="password-setup-form" class="login-card" hidden>
+      <img class="brand-logo" src="logo-sao-jose.svg" alt="">
+      <span class="eyebrow">PRIMEIRO ACESSO</span><h1>Crie sua senha</h1>
+      <p>Defina uma senha para acessar o painel protegido.</p>
+      <label>Nova senha<input type="password" name="new_password" required minlength="12" autocomplete="new-password" placeholder="Pelo menos 12 caracteres"></label>
+      <label>Confirme a senha<input type="password" name="confirm_password" required minlength="12" autocomplete="new-password" placeholder="Digite novamente"></label>
+      <p id="password-setup-error" class="form-error" hidden></p>
+      <button class="button button-orange full-button" type="submit">Salvar senha e entrar</button>
+    </form>
+  </main>
+  <main class="panel-layout" hidden>
     <aside class="sidebar">
       <span class="sidebar-label">MENU PRINCIPAL</span>
       <button class="sidebar-link active" data-view="overview"><span>▦</span> Visão geral</button>
       <button class="sidebar-link" data-view="properties"><span>⌂</span> Imóveis <b id="sidebar-property-count">0</b></button>
       <button class="sidebar-link" data-view="leads"><span>✉</span> Interessados <b id="sidebar-lead-count">0</b></button>
-      <div class="sidebar-note"><strong>MODO DEMONSTRAÇÃO</strong><p>Este painel salva alterações apenas neste navegador.</p></div>
+      <div class="sidebar-note"><strong>MODO DEMONSTRAÇÃO</strong><p>Após entrar, anúncios e contatos sincronizam pelo banco online.</p></div>
     </aside>
 
     <section class="panel-main">
       <div class="panel-title-row"><div><span class="eyebrow">IMOBILIÁRIA SÃO JOSÉ · DIVINOLÂNDIA</span><h1 id="panel-title">Visão geral</h1><p id="panel-subtitle">Anúncios e interessados em um só lugar.</p></div><button class="button button-orange" id="add-property-button">+ Novo imóvel</button></div>
 
-      <div class="demo-warning"><strong>Prévia sem backend:</strong> anúncios e contatos ficam no armazenamento local deste navegador e não sincronizam entre aparelhos. Não use dados reais.</div>
+      <div id="panel-error" class="form-error panel-error" hidden></div><div class="demo-warning"><strong>Banco online demonstrativo:</strong> anúncios e interessados sincronizam entre aparelhos. Os registros são fictícios; não use para operação comercial.</div>
 
       <section class="panel-view" id="view-overview">
         <div class="stat-grid">
@@ -38,7 +59,7 @@
           <article class="stat-card"><span>VENDA / ALUGUEL</span><strong id="stat-deals">0 / 0</strong><small>anúncios ativos</small></article>
         </div>
         <div class="dashboard-grid">
-          <article class="panel-card"><div class="card-heading"><div><h2>Imóveis recentes</h2><p>Alterações feitas aqui aparecem no site deste navegador.</p></div><button class="text-button" data-open-view="properties">Ver todos →</button></div><div class="table-wrap"><table><thead><tr><th>IMÓVEL</th><th>FINALIDADE</th><th>VALOR</th><th>STATUS</th></tr></thead><tbody id="overview-properties"></tbody></table></div></article>
+          <article class="panel-card"><div class="card-heading"><div><h2>Imóveis recentes</h2><p>Alterações sincronizadas com o site público.</p></div><button class="text-button" data-open-view="properties">Ver todos →</button></div><div class="table-wrap"><table><thead><tr><th>IMÓVEL</th><th>FINALIDADE</th><th>VALOR</th><th>STATUS</th></tr></thead><tbody id="overview-properties"></tbody></table></div></article>
           <article class="panel-card leads-preview"><div class="card-heading"><div><h2>Novos interessados</h2><p>Pedidos de informação da página pública.</p></div><button class="text-button" data-open-view="leads">Ver todos →</button></div><div id="overview-leads" class="lead-list"></div></article>
         </div>
       </section>
@@ -48,10 +69,10 @@
       </section>
 
       <section class="panel-view" id="view-leads" hidden>
-        <article class="panel-card"><div class="card-heading"><div><h2>Interessados</h2><p>Os formulários enviados no site aparecem nesta lista, neste navegador.</p></div></div><div id="leads-table" class="leads-table"></div></article>
+        <article class="panel-card"><div class="card-heading"><div><h2>Interessados</h2><p>Os formulários enviados no site aparecem aqui quando sincronizados.</p></div></div><div id="leads-table" class="leads-table"></div></article>
       </section>
 
-      <footer class="panel-footer"><span>Rua Guanabara, 26 · Divinolândia–SP</span><strong>© MM Sistemas &amp; Tecnologia 2026</strong></footer>
+      <footer class="panel-footer"><span>Endereço demonstrativo: Rua Guanabara, 26 · Divinolândia–SP</span><strong>© MM Sistemas &amp; Tecnologia 2026</strong></footer>
     </section>
   </main>
 

@@ -1,21 +1,27 @@
-# Imobiliária São José — demonstração
+# Imobiliária São José — demonstração integrada
 
-Site público e painel administrativo demonstrativo para a Imobiliária São José, em Divinolândia–SP. As fotos foram criadas para esta prévia; imóveis, preços, contatos e contagens são fictícios.
+Site público e painel demonstrativo para a Imobiliária São José, em Divinolândia–SP. O portal usa Supabase para anúncios e pedidos de interesse; o painel exige sessão autenticada. Os imóveis, valores, contatos, logo e fachada são fictícios ou ilustrativos — não use como operação comercial.
 
 ## Arquivos do site
 
-- `index.html` — portal público e busca de imóveis.
-- `painel.html` — painel demonstrativo para imóveis e interessados.
+- `index.html` — portal público e busca de anúncios.
+- `painel.html` — painel autenticado para imóveis e interessados.
 - `styles.css` — identidade visual em preto e laranja.
-- `app.js` — filtros, anúncios, cadastro demonstrativo e recebimento local de interessados.
-- `casa-ficticia.webp` e `apartamento-ficticio.webp` — imagens de imóveis fictícios.
+- `app.js` — leitura pública de anúncios, envio de interessados, login e operações do painel com Supabase.
+- `schema.sql` — tabelas, RLS, permissões e os três imóveis fictícios iniciais.
+- `logo-sao-jose.svg` — logo ilustrativo criado para a demonstração.
+- `fachada-imobiliaria-ilustrativa.webp` — fachada gerada para esta prévia e identificada no site como ilustrativa.
+- `casa-ficticia.webp`, `apartamento-ficticio.webp` — fotos ilustrativas de imóveis fictícios.
+- Arquivos `.png` das casas/apartamento — imagens originais de apoio da demonstração.
 
-## Limites da demonstração
+## Banco, sincronização e segurança
 
-Este protótipo usa `localStorage`: o site público e o painel compartilham anúncios e contatos somente no mesmo navegador e aparelho. Não existe banco de dados online, autenticação ou sincronização entre aparelhos. O painel está aberto e contém apenas dados fictícios; não inserir informações pessoais nem usar para receber contatos reais.
+O Supabase contém `properties`, `leads` e a lista privada `admin_users`, com Row Level Security habilitado e cadastro público desativado. Visitantes podem consultar anúncios ativos e enviar solicitações fictícias; somente a conta individualmente incluída em `admin_users` pode gerenciar anúncios e consultar interessados. A chave publishable usada no navegador é pública e limitada pelas políticas RLS; nunca adicionar chaves secretas ao repositório.
 
-Antes de operação real, conectar uma base online com regras de acesso, criar autenticação segura para a equipe, revisar privacidade e confirmar com a imobiliária os imóveis, preços, telefone e demais dados públicos.
+Anúncios e solicitações ficam guardados online e sincronizam entre aparelhos. O painel atualiza ao abrir, ao voltar para a janela e a cada 30 segundos. O formulário informa que esta é uma demonstração e solicita consentimento; use apenas dados fictícios. Para receber contatos reais, revisar privacidade, retenção, segurança, textos legais e dados da imobiliária.
 
-## Assinatura
+## Conteúdo de demonstração
+
+O logo, a fachada, os anúncios e valores são ilustrativos. Instagram `@imobiliariasaojose.demo`, WhatsApp e e-mail `.invalid` são placeholders não ativos — os botões informam que nenhum canal real será aberto. O mapa aponta para o endereço demonstrativo Rua Guanabara, 26, Centro, Divinolândia–SP. A marca deve substituir os contatos e imagens antes de uma operação comercial.
 
 © MM Sistemas & Tecnologia 2026

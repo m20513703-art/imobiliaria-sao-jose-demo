@@ -12,10 +12,10 @@
   <div class="demo-banner">DEMONSTRAÇÃO · imóveis e contatos fictícios · não inserir dados reais</div>
   <header class="site-header">
     <a class="brand" href="index.html" aria-label="Imobiliária São José — página inicial">
-      <span class="brand-mark">SJ</span><span><strong>São José</strong><small>IMOBILIÁRIA</small></span>
+      <img class="brand-logo" src="logo-sao-jose.svg" alt=""><span><strong>São José</strong><small>IMOBILIÁRIA</small></span>
     </a>
     <nav class="main-nav" aria-label="Navegação principal">
-      <a href="#inicio">Início</a><a href="#imoveis">Imóveis</a><a href="#sobre">Sobre</a>
+      <a href="#inicio">Início</a><a href="#imoveis">Imóveis</a><a href="#sobre">Sobre</a><a href="#contato">Contato</a>
     </nav>
     <a class="button button-dark header-cta" href="#imoveis">Encontrar imóvel</a>
   </header>
@@ -55,19 +55,30 @@
         <div><span class="eyebrow">ESCOLHAS DA SEMANA</span><h2>Imóveis em destaque</h2><p>Conheça algumas opções selecionadas para você.</p></div>
         <span class="demo-pill">ANÚNCIOS FICTÍCIOS</span>
       </div>
+      <p id="connection-message" class="connection-message" hidden></p>
+      <p id="lead-success" class="success-message" hidden></p>
       <div id="property-grid" class="property-grid" aria-live="polite"></div>
       <p id="empty-properties" class="empty-state" hidden>Nenhum imóvel combina com esses filtros. Tente outra busca.</p>
     </section>
 
-    <section class="about-strip" id="sobre">
-      <div class="about-icon">SJ</div>
-      <div><span class="eyebrow">IMOBILIÁRIA SÃO JOSÉ</span><h2>Seu próximo endereço pode começar aqui.</h2><p>Atendimento demonstrativo em Divinolândia, SP. Os imóveis e as condições desta página são fictícios.</p></div>
-      <a class="button button-outline" href="#imoveis">Explorar imóveis</a>
+    <section class="office-section" id="sobre">
+      <div class="office-photo-wrap"><img class="office-photo" src="fachada-imobiliaria-ilustrativa.webp" alt="Imagem ilustrativa de uma imobiliária fictícia em Divinolândia"><span class="listing-tag">FACHADA ILUSTRATIVA</span></div>
+      <div class="office-copy"><span class="eyebrow">IMOBILIÁRIA SÃO JOSÉ</span><h2>Seu próximo endereço pode começar aqui.</h2><p>Esta é uma imagem ilustrativa; substitua por uma foto real da imobiliária quando tiver. Os imóveis e condições desta página também são fictícios.</p><p class="office-address">Endereço demonstrativo: Rua Guanabara, 26 · Centro · Divinolândia–SP</p><a class="button button-orange" id="como-chegar" href="https://www.google.com/maps/dir//R.+Guanabara,+26+-+Centro,+Divinol%C3%A2ndia+-+SP,+13780-000/@-21.6646762,-46.7431329,17z/data=!4m17!1m8!3m7!1s0x94b62965b4c653af:0xb3f097dedf60d93f!2sR.+Guanabara,+26+-+Centro,+Divinol%C3%A2ndia+-+SP,+13780-000!3b1!8m2!3d-21.6646762!4d-46.740558!16s%2Fg%2F11cscl1t65!4m7!1m0!1m5!1m1!1s0x94b62965b4c653af:0xb3f097dedf60d93f!2m2!1d-46.740558!2d-21.6646762?entry=ttu&amp;g_ep=EgoyMDI2MTAwNC4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener noreferrer">Como chegar <span aria-hidden="true">↗</span></a></div>
+    </section>
+
+    <section class="contact-section" id="contato">
+      <div class="contact-heading"><span class="eyebrow">CANAIS DE DEMONSTRAÇÃO</span><h2>Fale com a equipe</h2><p>Perfis e canais fictícios; nenhum contato externo é aberto.</p></div>
+      <div class="contact-cards">
+        <button type="button" class="contact-card" data-demo-social="instagram"><span class="contact-icon">◎</span><span><strong>Instagram</strong><small>@imobiliariasaojose.demo · fictício</small></span><span class="contact-arrow">↗</span></button>
+        <button type="button" class="contact-card" data-demo-social="whatsapp"><span class="contact-icon">◉</span><span><strong>WhatsApp</strong><small>Canal demonstrativo · sem número ativo</small></span><span class="contact-arrow">↗</span></button>
+        <button type="button" class="contact-card" data-demo-social="email"><span class="contact-icon">✉</span><span><strong>E-mail</strong><small>contato@imobiliariasaojose.invalid · fictício</small></span><span class="contact-arrow">↗</span></button>
+      </div>
+      <p id="demo-social-message" class="demo-social-message" role="status" aria-live="polite" hidden></p>
     </section>
   </main>
 
   <footer class="site-footer">
-    <div class="footer-top"><div><a class="brand footer-brand" href="index.html"><span class="brand-mark">SJ</span><span><strong>São José</strong><small>IMOBILIÁRIA</small></span></a><p>Rua Guanabara, 26 · Divinolândia–SP</p></div><a href="painel.html" class="footer-admin">Painel demonstrativo da equipe ↗</a></div>
+    <div class="footer-top"><div><a class="brand footer-brand" href="index.html"><img class="brand-logo" src="logo-sao-jose.svg" alt=""><span><strong>São José</strong><small>IMOBILIÁRIA</small></span></a><p>Rua Guanabara, 26 · Divinolândia–SP</p></div><a href="painel.html" class="footer-admin">Painel demonstrativo da equipe ↗</a></div>
     <div class="footer-bottom"><span>Prévia: anúncios, valores e contatos são fictícios.</span><strong>© MM Sistemas &amp; Tecnologia 2026</strong></div>
   </footer>
 
@@ -81,7 +92,9 @@
       <label>Seu nome<input name="name" required maxlength="80" placeholder="Ex.: Ana Souza"></label>
       <label>Telefone de demonstração<input name="phone" required maxlength="24" placeholder="(00) 00000-0000"></label>
       <label>Mensagem<textarea name="message" rows="3" maxlength="300" placeholder="Tenho interesse neste imóvel."></textarea></label>
-      <p class="form-warning">Prévia demonstrativa: use apenas dados fictícios. O contato fica salvo neste navegador.</p>
+      <p class="form-warning">Demonstração: use somente dados fictícios. Se enviado, nome, telefone e mensagem serão armazenados no banco online desta demonstração e vistos apenas pela equipe autenticada.</p>
+      <label class="consent-line"><input type="checkbox" name="consent" required> Estou ciente do armazenamento online dos dados fictícios informados.</label>
+      <p id="lead-error" class="form-error" hidden></p>
       <button class="button button-orange full-button" type="submit">Enviar interesse</button>
     </form>
   </dialog>
