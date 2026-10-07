@@ -7,7 +7,7 @@
   const page = document.body.dataset.page;
   const seeds = [
     {id:'sj-001',title:'Casa fictícia no Centro',kind:'Casa',deal:'Venda',price:'R$ 420.000',rooms:3,area:120,neighborhood:'Centro',city:'Divinolândia, SP',photo:'casa-ficticia.webp',active:true},
-    {id:'sj-002',title:'Apartamento fictício',kind:'Apartamento',deal:'Aluguel',price:'R$ 1.600/mês',rooms:2,area:78,neighborhood:'Jardim',city:'Divinolândia, SP',photo:'apartamento-ficticio.webp',active:true},
+    {id:'sj-002',title:'Apartamento fictício',kind:'Apartamento',deal:'Aluguel',price:'R$ 1.600',rooms:2,area:78,neighborhood:'Jardim',city:'Divinolândia, SP',photo:'apartamento-ficticio.webp',active:true},
     {id:'sj-003',title:'Casa fictícia com varanda',kind:'Casa',deal:'Venda',price:'R$ 510.000',rooms:3,area:145,neighborhood:'Vila Nova',city:'Divinolândia, SP',photo:'casa-ficticia.webp',active:true}
   ];
   const escapeHtml = value => String(value ?? '').replace(/[&<>"']/g, ch => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));
@@ -60,7 +60,7 @@
     const grid=document.getElementById('property-grid');if(!grid)return;
     const deal=document.getElementById('filter-deal')?.value||'',kind=document.getElementById('filter-kind')?.value||'',city=(document.getElementById('filter-city')?.value||'').trim().toLowerCase();
     const list=state.properties.filter(p=>p.active&&(!deal||p.deal===deal)&&(!kind||p.kind===kind)&&(!city||p.city.toLowerCase().includes(city.replace(', sp',''))||p.city.toLowerCase().includes(city)));
-    grid.innerHTML=list.map(p=>`<article class="property-card"><div class="property-image-wrap"><img class="property-image" src="${escapeHtml(p.photo)}" alt="Foto ilustrativa de ${escapeHtml(p.kind.toLowerCase())} fictício" loading="lazy"><span class="listing-tag">ANÚNCIO FICTÍCIO</span></div><div class="property-body"><div class="property-meta">${escapeHtml(p.deal)} · ${escapeHtml(p.kind)}</div><h3>${escapeHtml(p.title)}</h3><p class="property-location">${escapeHtml(p.neighborhood||'Divinolândia')} · ${escapeHtml(p.city)}</p><div class="property-features"><span>⌂ ${escapeHtml(p.rooms)} quartos</span><span>▱ ${escapeHtml(p.area)} m²</span></div><div class="property-bottom"><div class="property-price">${escapeMoney(p.price)}${p.deal==='Aluguel'?'<small> / mês</small>':''}</div><button class="button button-orange property-contact" data-contact="${escapeHtml(p.id)}" type="button">Tenho interesse</button></div></div></article>`).join('');
+    grid.innerHTML=list.map(p=>`<article class="property-card"><div class="property-image-wrap"><img class="property-image" src="${escapeHtml(p.photo)}" alt="Foto ilustrativa de ${escapeHtml(p.kind.toLowerCase())} fictício" loading="lazy"><span class="listing-tag">ANÚNCIO FICTÍCIO</span></div><div class="property-body"><div class="property-meta">${escapeHtml(p.deal)} · ${escapeHtml(p.kind)}</div><h3>${escapeHtml(p.title)}</h3><p class="property-location">${escapeHtml(p.neighborhood||'Divinolândia')} · ${escapeHtml(p.city)}</p><div class="property-features"><span>⌂ ${escapeHtml(p.rooms)} quartos</span><span>▱ ${escapeHtml(p.area)} m²</span></div><div class="property-bottom"><div class="property-price">${escapeMoney(p.price)}${p.deal==='Aluguel'&&!/\/mês/i.test(p.price)?'<small> / mês</small>':''}</div><button class="button button-orange property-contact" data-contact="${escapeHtml(p.id)}" type="button">Tenho interesse</button></div></div></article>`).join('');
     document.getElementById('empty-properties').hidden=list.length>0;
   }
   function renderPanel() {
