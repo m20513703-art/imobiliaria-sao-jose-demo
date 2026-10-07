@@ -42,7 +42,7 @@
 
   async function loadPublicProperties() {
     try { state.properties=(await dbFetch('properties',{query:'?select=*&active=eq.true&order=created_at.desc'})).map(mapProperty); renderPublic(); }
-    catch(error) { showError('connection-message','Não foi possível carregar os anúncios online. Atualize a página para tentar novamente.'); console.error(error); }
+    catch(error) { state.properties=seeds.map(p=>({...p}));renderPublic();showError('connection-message','Exibindo apenas os imóveis de exemplo; a sincronização online está indisponível no momento.');console.error(error); }
   }
   async function loadPanelData() {
     if(!state.token)return;
