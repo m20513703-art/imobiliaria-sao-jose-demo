@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Prévia demonstrativa do portal da Imobiliária São José em Divinolândia, SP.">
+  <title>Imobiliária São José | Divinolândia, SP</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js" defer></script>
+</head>
+<body data-page="public">
+  <div class="demo-banner">DEMONSTRAÇÃO · imóveis e contatos fictícios · não inserir dados reais</div>
+  <header class="site-header">
+    <a class="brand" href="index.html" aria-label="Imobiliária São José — página inicial">
+      <span class="brand-mark">SJ</span><span><strong>São José</strong><small>IMOBILIÁRIA</small></span>
+    </a>
+    <nav class="main-nav" aria-label="Navegação principal">
+      <a href="#inicio">Início</a><a href="#imoveis">Imóveis</a><a href="#sobre">Sobre</a>
+    </nav>
+    <a class="button button-dark header-cta" href="#imoveis">Encontrar imóvel</a>
+  </header>
+
+  <main>
+    <section class="hero" id="inicio">
+      <div class="hero-copy">
+        <span class="eyebrow"><i></i> DIVINOLÂNDIA E REGIÃO</span>
+        <h1>Um lugar novo.<br><span>Uma nova história.</span></h1>
+        <p>Encontre um imóvel para morar ou investir com a Imobiliária São José.</p>
+        <div class="hero-actions"><a class="button button-orange" href="#imoveis">Ver imóveis <span aria-hidden="true">→</span></a><span class="hero-note">Opções para comprar e alugar</span></div>
+      </div>
+      <div class="hero-photo-wrap">
+        <img class="hero-photo" src="casa-ficticia.webp" alt="Foto ilustrativa de uma casa fictícia">
+        <div class="photo-stamp"><span>IMÓVEL</span><strong>ILUSTRATIVO</strong></div>
+      </div>
+      <div class="hero-orb" aria-hidden="true"></div>
+    </section>
+
+    <section class="search-wrap" aria-label="Buscar imóveis">
+      <form id="search-form" class="search-panel">
+        <label>QUERO
+          <select id="filter-deal"><option value="">Comprar ou alugar</option><option>Venda</option><option>Aluguel</option></select>
+        </label>
+        <label>TIPO DE IMÓVEL
+          <select id="filter-kind"><option value="">Todos os tipos</option><option>Casa</option><option>Apartamento</option></select>
+        </label>
+        <label>LOCALIZAÇÃO
+          <input id="filter-city" value="Divinolândia, SP" aria-label="Localização">
+        </label>
+        <button class="button button-orange search-button" type="submit"><span>Buscar</span><span aria-hidden="true">⌕</span></button>
+      </form>
+    </section>
+
+    <section class="section properties-section" id="imoveis">
+      <div class="section-heading">
+        <div><span class="eyebrow">ESCOLHAS DA SEMANA</span><h2>Imóveis em destaque</h2><p>Conheça algumas opções selecionadas para você.</p></div>
+        <span class="demo-pill">ANÚNCIOS FICTÍCIOS</span>
+      </div>
+      <div id="property-grid" class="property-grid" aria-live="polite"></div>
+      <p id="empty-properties" class="empty-state" hidden>Nenhum imóvel combina com esses filtros. Tente outra busca.</p>
+    </section>
+
+    <section class="about-strip" id="sobre">
+      <div class="about-icon">SJ</div>
+      <div><span class="eyebrow">IMOBILIÁRIA SÃO JOSÉ</span><h2>Seu próximo endereço pode começar aqui.</h2><p>Atendimento demonstrativo em Divinolândia, SP. Os imóveis e as condições desta página são fictícios.</p></div>
+      <a class="button button-outline" href="#imoveis">Explorar imóveis</a>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-top"><div><a class="brand footer-brand" href="index.html"><span class="brand-mark">SJ</span><span><strong>São José</strong><small>IMOBILIÁRIA</small></span></a><p>Rua Guanabara, 26 · Divinolândia–SP</p></div><a href="painel.html" class="footer-admin">Painel demonstrativo da equipe ↗</a></div>
+    <div class="footer-bottom"><span>Prévia: anúncios, valores e contatos são fictícios.</span><strong>© MM Sistemas &amp; Tecnologia 2026</strong></div>
+  </footer>
+
+  <dialog id="lead-dialog" class="modal">
+    <form id="lead-form" class="modal-card">
+      <button class="modal-close" type="button" data-close-dialog aria-label="Fechar">×</button>
+      <span class="eyebrow">FALE COM A EQUIPE</span>
+      <h2>Peça informações</h2>
+      <p class="modal-intro" id="lead-property-name">Sobre o imóvel selecionado</p>
+      <input type="hidden" id="lead-property-id">
+      <label>Seu nome<input name="name" required maxlength="80" placeholder="Ex.: Ana Souza"></label>
+      <label>Telefone de demonstração<input name="phone" required maxlength="24" placeholder="(00) 00000-0000"></label>
+      <label>Mensagem<textarea name="message" rows="3" maxlength="300" placeholder="Tenho interesse neste imóvel."></textarea></label>
+      <p class="form-warning">Prévia demonstrativa: use apenas dados fictícios. O contato fica salvo neste navegador.</p>
+      <button class="button button-orange full-button" type="submit">Enviar interesse</button>
+    </form>
+  </dialog>
+</body>
+</html>
